@@ -1,14 +1,14 @@
 <template>
-  <header class="bg-slate-800 shadow">
+  <header class="glassmorphic-header">
     <div class="flex justify-between items-center px-6 py-4">
       <h1 class="text-2xl font-semibold text-gray-800">Dashboard</h1>
       <div class="flex items-center space-x-4">
         <!-- Notification bell -->
         <div class="relative">
-          <button @click="toggleNotifications" class="hover:text-sky-500">
+          <button @click="toggleNotifications" class="glassmorphic-button hover:text-sky-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 shake-animation"
+              class="h-4 w-4 shake-animation"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -32,9 +32,36 @@
 
 <script setup>
 import Profile from './profile.vue'
+
+// Optional function for handling notifications
+const toggleNotifications = () => {
+  // Implement your notification logic here
+}
 </script>
 
 <style scoped>
+.glassmorphic-header {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3); /* Darker transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+  color: #fff;
+}
+
+.glassmorphic-button {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.3); /* Transparent background with slight opacity */
+  border-radius: 50%; /* Make the background round */
+  padding: 5px; /* Increase size for a larger button */
+  border: 1px solid #1e293b; /* Subtle border */
+}
+
+.glassmorphic-button:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Slightly darker background on hover */
+}
+
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
