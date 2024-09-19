@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-slate-500 to-purple-500 bg-animate-gradient p-4"
-  ></div>
+  <div>Hello from dashboard</div>
 </template>
 
 <script setup></script>

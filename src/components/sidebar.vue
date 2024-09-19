@@ -25,12 +25,17 @@
       </button>
     </div>
     <nav class="mt-8 space-y-2 px-3 text-black font-extrabold text-xl">
-      <a
+      <router-link
         v-for="item in menuItems"
         :key="item.name"
-        href="#"
+        :to="`/home${item.route}`"
         class="flex py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
-        :class="{ 'flex-col items-center': !isOpen, 'items-center': isOpen }"
+        :class="[
+          {
+            'flex-col items-center': !isOpen,
+            'items-center': isOpen
+          }
+        ]"
       >
         <i :class="[item.icon, 'w-4 h-4']"></i>
         <span
@@ -44,22 +49,22 @@
         >
           {{ item.name }}
         </span>
-      </a>
+      </router-link>
     </nav>
   </aside>
 </template>
-<!-- <i class="fa-solid fa-plus"></i> -->
+
 <script setup>
 import { ref } from 'vue'
 
 const isOpen = ref(true)
 
 const menuItems = [
-  { name: 'Dashboard', icon: 'fas fa-home' },
-  { name: 'Orders', icon: 'fas fa-shopping-cart' },
-  { name: 'Food', icon: 'fas fa-utensils' },
-  { name: 'Analytics', icon: 'fa-solid fa-chart-line' },
-  { name: 'Create Food', icon: 'fa-solid fa-plus' },
+  { name: 'Dashboard', route: '/dashboard', icon: 'fas fa-home' },
+  { name: 'Orders', route: '/orders', icon: 'fas fa-shopping-cart' },
+  { name: 'Food', route: '/food', icon: 'fas fa-utensils' },
+  { name: 'Analytics', route: '/analytics', icon: 'fa-solid fa-chart-line' },
+  { name: 'Create Food', route: '/create-food', icon: 'fa-solid fa-plus' }
 ]
 
 const toggleSidebar = () => {
@@ -68,6 +73,14 @@ const toggleSidebar = () => {
 </script>
 
 <style scoped>
+.router-link-active {
+  background-color: rgba(255, 255, 255, 0.2); /* Customize the active background */
+}
+
+.router-link-exact-active {
+  background-color: rgba(255, 255, 255, 0.3); /* Customize the exact active background */
+}
+
 .glassmorphic-sidebar {
   backdrop-filter: blur(16px);
   background-color: rgba(255, 255, 255, 0.05);
