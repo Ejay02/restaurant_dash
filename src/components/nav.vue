@@ -1,7 +1,7 @@
 <template>
   <header class="glassmorphic-header">
     <div class="flex justify-between items-center px-6 py-4">
-      <h1 class="text-2xl font-semibold text-gray-800">Dashboard</h1>
+      <h1 class="text-2xl font-semibold text-black">Dashboard</h1>
       <div class="flex items-center space-x-4">
         <!-- Notification bell -->
         <div class="relative">
