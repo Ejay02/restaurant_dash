@@ -33,29 +33,31 @@
 <script setup>
 import Profile from './profile.vue'
 
-// Optional function for handling notifications
 const toggleNotifications = () => {
-  // Implement your notification logic here
+  // Notification logic
 }
 </script>
 
 <style scoped>
 .glassmorphic-header {
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.3); /* Darker transparent background */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
 
 .glassmorphic-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.3); /* Transparent background with slight opacity */
-  border-radius: 50%; /* Make the background round */
-  padding: 5px; /* Increase size for a larger button */
-  border: 1px solid #1e293b; /* Subtle border */
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 40px; /* Ensure button is round */
+  height: 40px;
+  padding: 0;
+  border: 1px solid #1e293b;
 }
 
 .glassmorphic-button:hover {

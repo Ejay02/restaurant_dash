@@ -29,14 +29,17 @@
         v-for="item in menuItems"
         :key="item.name"
         href="#"
-        class="flex items-center py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
+        class="flex py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
+        :class="{ 'flex-col items-center': !isOpen, 'items-center': isOpen }"
       >
-        <i :class="[item.icon, 'w-6 h-6 mr-3']"></i>
+        <i :class="[item.icon, 'w-4 h-4']"></i>
         <span
           :class="{
             'opacity-0': !isOpen,
             'opacity-100': isOpen,
-            'transition-opacity duration-300': true
+            'transition-opacity duration-300': true,
+            'ml-2': isOpen,
+            'text-center': !isOpen
           }"
         >
           {{ item.name }}
@@ -54,9 +57,9 @@ const isOpen = ref(true)
 const menuItems = [
   { name: 'Dashboard', icon: 'fas fa-home' },
   { name: 'Orders', icon: 'fas fa-shopping-cart' },
-  { name: 'Create Food', icon: 'fa-solid fa-plus' },
   { name: 'Food', icon: 'fas fa-utensils' },
-  { name: 'Analytics', icon: 'fa-solid fa-chart-line' }
+  { name: 'Analytics', icon: 'fa-solid fa-chart-line' },
+  { name: 'Create Food', icon: 'fa-solid fa-plus' },
 ]
 
 const toggleSidebar = () => {
@@ -98,7 +101,7 @@ const toggleSidebar = () => {
 
 .glassmorphic-sidebar nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .glassmorphic-sidebar nav a i {
