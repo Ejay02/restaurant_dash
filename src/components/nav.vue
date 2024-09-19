@@ -5,7 +5,7 @@
       <div class="flex items-center space-x-4">
         <!-- Notification bell -->
         <div class="relative">
-          <button @click="toggleNotifications" class="text-gray-500 hover:text-gray-700">
+          <button @click="toggleNotifications" class="hover:text-sky-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 shake-animation"
@@ -21,7 +21,6 @@
               />
             </svg>
           </button>
-          <!-- Notification dropdown (to be implemented) -->
         </div>
 
         <!-- User profile -->
