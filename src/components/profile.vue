@@ -8,11 +8,11 @@
 
     <!-- User menu dropdown with glassmorphism effect -->
     <div v-if="showUserMenu" class="absolute right-0 mt-2 w-48 rounded-md py-1 z-10 glassmorphism">
-      <a href="#" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+      <a href="/home/profile" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
         <i class="fa-solid fa-user"></i>
         <span class="ml-2">Profile</span>
       </a>
-      <a href="#" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+      <a href="/home/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
         <i class="fa-solid fa-user-gear"></i>
         <span class="ml-2">Settings</span>
       </a>

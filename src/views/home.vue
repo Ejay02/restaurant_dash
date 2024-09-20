@@ -12,9 +12,7 @@
 
       <!-- Page content -->
       <router-view />
-      <!-- <Dashboard />
-      <Orders />
-      <CreateFood /> -->
+  
     </div>
   </div>
 </template>
@@ -22,9 +20,7 @@
 <script setup>
 import Nav from '@/components/nav.vue'
 import Sidebar from '@/components/sidebar.vue'
-// import Dashboard from '@/components/dashboard.vue'
-// import Orders from './orders.vue'
-// import CreateFood from './createFood.vue'
+
 </script>
 
 <style scoped>

@@ -1,11 +1,19 @@
 <template>
   <header class="glassmorphic-header">
     <div class="flex justify-between items-center px-6 py-4">
-      <h1 class="text-2xl font-semibold text-black">Dashboard</h1>
+      <!-- logo -->
+      <div class="flex items-center space-x-2 cursor-pointer">
+        <img
+          src="../assets/quick_dash.png"
+          alt="quick dash logo"
+          class="rounded-full w-10 h-10"
+        />
+      </div>
+
       <div class="flex items-center space-x-4">
         <!-- Notification bell -->
         <div class="relative">
-          <button @click="toggleNotifications" class="glassmorphic-button hover:text-sky-500">
+          <button @click="toggleNotifications" class="glassmorphic-button hover:text-purple-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4 shake-animation"
@@ -54,8 +62,8 @@ const toggleNotifications = () => {
   backdrop-filter: blur(4px);
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  width: 40px; /* Ensure button is round */
-  height: 40px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   border: 1px solid #1e293b;
 }

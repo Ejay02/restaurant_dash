@@ -46,6 +46,7 @@
 </template>
 
 <script setup>
+import router from '@/router'
 import { ref, computed } from 'vue'
 
 const email = ref('')
@@ -56,8 +57,7 @@ const isButtonDisabled = computed(() => {
 })
 
 const handleLogin = () => {
-  // Implement your login logic here
-  console.log('Login attempted with:', { email: email.value, password: password.value })
+  router.push('/home')
 }
 </script>
 

@@ -6,6 +6,9 @@ import CreateFood from '@/views/createFood.vue'
 import Dashboard from '@/components/dashboard.vue'
 import Analytics from '@/components/analytics.vue'
 import Food from '@/components/food.vue'
+import Profile from '@/views/dropdown/profile.vue'
+import Settings from '@/views/dropdown/settings.vue'
+import NotFound from '@/components/error/notFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,8 +47,25 @@ const router = createRouter({
           path: 'create-food',
           name: 'create-food',
           component: CreateFood
+        },
+        {
+          path: '/profile',
+          name: 'profile',
+          component: Profile
+        },
+        {
+          path: '/settings',
+          name: 'settings',
+          component: Settings
         }
       ]
+    },
+
+    {
+      // path: "*",
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFound
     }
 
     // {
@@ -56,7 +76,11 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
-  ]
+  ],
+  // eslint-disable-next-line no-unused-vars
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 export default router
