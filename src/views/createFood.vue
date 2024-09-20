@@ -28,12 +28,16 @@
                 class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg"
               >
                 <option value="" disabled selected>Select category</option>
-                <option value="Breakfast">Breakfast</option>
+                <!-- <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
                 <option value="Dinner">Dinner</option>
-                <option value="Snacks">Snacks</option>
+                <option value="Snacks">Snacks</option> -->
+                <option v-for="category in categories" :key="category" :value="category">
+                  {{ category }}
+                </option>
               </select>
             </div>
+            <!-- price -->
             <div>
               <label for="foodPrice" class="block text-sm font-medium mb-2">Price</label>
               <input
@@ -139,6 +143,17 @@ const handleCreateFood = () => {
   // Functionality to create food will go here
   console.log(food.value)
 }
+
+const categories = [
+  'Breakfast',
+  'Lunch',
+  'Dinner',
+  'Snacks',
+  'Appetizers',
+  'Desserts',
+  'Beverages',
+  'Salads'
+]
 </script>
 
 <style scoped>

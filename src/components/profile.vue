@@ -16,7 +16,7 @@
         <i class="fa-solid fa-user-gear"></i>
         <span class="ml-2">Settings</span>
       </a>
-      <a href="#" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+      <a href="/" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
         <i class="fa-solid fa-power-off"></i>
         <span class="ml-2">Logout</span>
       </a>

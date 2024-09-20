@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply h-screen overflow-hidden;
+  @apply h-screen ;
   font-family: 'Gowun Batang', serif;
   font-weight: 700;
   font-style: normal;

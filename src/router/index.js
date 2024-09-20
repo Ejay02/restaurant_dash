@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/home.vue'
-import Login from '../views/login.vue'
+import Login from '../views/auth/login.vue'
 import Orders from '@/views/orders.vue'
 import CreateFood from '@/views/createFood.vue'
 import Dashboard from '@/components/dashboard.vue'
@@ -9,6 +9,7 @@ import Food from '@/components/food.vue'
 import Profile from '@/views/dropdown/profile.vue'
 import Settings from '@/views/dropdown/settings.vue'
 import NotFound from '@/components/error/notFound.vue'
+import Signup from '@/views/auth/signup.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/home',
