@@ -5,8 +5,8 @@ import Orders from '@/views/orders.vue'
 import CreateFood from '@/views/createFood.vue'
 import Dashboard from '@/components/dashboard.vue'
 import Analytics from '@/components/analytics.vue'
-import Food from '@/components/food.vue'
-import Profile from '@/views/dropdown/profile.vue'
+import Food from '@/components/foodList.vue'
+import ProfileSettings from '@/views/dropdown/profileSettings.vue'
 import Settings from '@/views/dropdown/settings.vue'
 import NotFound from '@/components/error/notFound.vue'
 import Signup from '@/views/auth/signup.vue'
@@ -55,9 +55,9 @@ const router = createRouter({
           component: CreateFood
         },
         {
-          path: '/profile',
-          name: 'profile',
-          component: Profile
+          path: '/profile-settings',
+          name: 'profile-settings',
+          component: ProfileSettings
         },
         {
           path: '/settings',

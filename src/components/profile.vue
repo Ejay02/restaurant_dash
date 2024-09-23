@@ -7,35 +7,63 @@
     </div>
 
     <!-- User menu dropdown with glassmorphism effect -->
-    <div v-if="showUserMenu" class="absolute right-0 mt-2 w-48 rounded-md py-1 z-10 glassmorphism">
-      <a href="/home/profile" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
-        <i class="fa-solid fa-user"></i>
-        <span class="ml-2">Profile</span>
-      </a>
-      <a href="/home/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
-        <i class="fa-solid fa-user-gear"></i>
-        <span class="ml-2">Settings</span>
-      </a>
-      <a href="/" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
-        <i class="fa-solid fa-power-off"></i>
-        <span class="ml-2">Logout</span>
-      </a>
-    </div>
+    <Teleport to="body">
+      <div
+        v-if="showUserMenu"
+        :style="dropdownStyle"
+        class="fixed w-48 rounded-md py-1 glassmorphism"
+      >
+        <a
+          href="/home/profile-settings"
+          class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20"
+        >
+          <i class="fa-solid fa-user"></i>
+          <span class="ml-2">Profile</span>
+        </a>
+        <a href="/home/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+          <i class="fa-solid fa-user-gear"></i>
+          <span class="ml-2">Settings</span>
+        </a>
+        <a href="/" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+          <i class="fa-solid fa-power-off"></i>
+          <span class="ml-2">Logout</span>
+        </a>
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 
 const showUserMenu = ref(false)
 const dropdown = ref(null)
+
+const dropdownStyle = computed(() => {
+  if (!dropdown.value) return {}
+
+  const rect = dropdown.value.getBoundingClientRect()
+  const spaceAbove = rect.top
+  const spaceBelow = window.innerHeight - rect.bottom
+
+  return {
+    right: `${window.innerWidth - rect.right}px`,
+    [spaceAbove > spaceBelow ? 'bottom' : 'top']:
+      `${spaceAbove > spaceBelow ? window.innerHeight - rect.top : rect.bottom}px`,
+    zIndex: 9999
+  }
+})
 
 const toggleUserMenu = () => {
   showUserMenu.value = !showUserMenu.value
 }
 
 const handleClickOutside = (event) => {
-  if (dropdown.value && !dropdown.value.contains(event.target)) {
+  if (
+    dropdown.value &&
+    !dropdown.value.contains(event.target) &&
+    !event.target.closest('.glassmorphism')
+  ) {
     showUserMenu.value = false
   }
 }
