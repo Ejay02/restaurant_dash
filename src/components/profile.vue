@@ -14,13 +14,13 @@
         class="fixed w-48 rounded-md py-1 glassmorphism"
       >
         <a
-          href="/home/profile-settings"
+          href="/profile-settings"
           class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20"
         >
           <i class="fa-solid fa-user"></i>
           <span class="ml-2">Profile</span>
         </a>
-        <a href="/home/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
+        <a href="/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
           <i class="fa-solid fa-user-gear"></i>
           <span class="ml-2">Settings</span>
         </a>
