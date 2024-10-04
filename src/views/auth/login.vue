@@ -1,5 +1,7 @@
 <template>
+  <LoadingScreen v-if="loading" />
   <div
+    v-else
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-slate-500 to-purple-500 bg-animate-gradient p-4"
   >
     <div
@@ -52,16 +54,25 @@
 <script setup>
 import router from '@/router'
 import { ref, computed } from 'vue'
+import LoadingScreen from '@/components/loadingScreen.vue'
 
 const email = ref('')
 const password = ref('')
+const loading = ref(false)
 
 const isButtonDisabled = computed(() => {
   return email.value === '' || password.value === ''
 })
 
 const handleLogin = () => {
-  router.push('/home/dashboard')
+  loading.value = true
+  try {
+    router.push('/home/dashboard')
+  } catch (error) {
+    console.log(error)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
