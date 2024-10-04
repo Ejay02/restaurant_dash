@@ -2,7 +2,7 @@
   <div class="p-4 overflow-auto">
     <div class="">
       <div
-        class="glassmorphic-card bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4"
+        class="glassmorphic-card bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4"
       >
         <h2 class="text-3xl sm:text-4xl font-bold sm:mb-4 text-center">Create Food</h2>
         <form @submit.prevent="handleCreateFood" class="flex flex-col sm:flex-row gap-6 sm:gap-10">
