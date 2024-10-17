@@ -5,7 +5,7 @@
       <div class="flex-grow overflow-auto mb-4">
         <div class="space-y-4">
           <div
-            v-for="item in paginatedFoodItems"
+            v-for="item in paginatedItems"
             :key="item.id"
             class="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-4 shadow-lg"
           >
@@ -58,24 +58,14 @@
           </div>
         </div>
       </div>
+
       <!-- Pagination controls -->
-      <div class="mt-4 flex justify-center items-center space-x-4 mb-10">
-        <button
-          @click="prevPage"
-          :disabled="currentPage === 1"
-          class="px-4 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <span class="text-white">Page {{ currentPage }} of {{ totalPages }}</span>
-        <button
-          @click="nextPage"
-          :disabled="currentPage === totalPages"
-          class="px-4 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+      <PaginationControls
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @prev-page="prevPage"
+        @next-page="nextPage"
+      />
     </div>
 
     <!-- Edit Modal -->
@@ -97,8 +87,10 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
+import { usePagination } from '@/utils/pagination'
 import EditModal from '@/components/modals/editModal.vue'
+import PaginationControls from './paginationControls.vue'
 import DeleteModal from '@/components/modals/deleteModal.vue'
 
 const foodItems = ref([
@@ -162,31 +154,15 @@ const foodItems = ref([
 ])
 
 const itemsPerPage = 5
-const currentPage = ref(1)
+const { currentPage, totalPages, paginatedItems, prevPage, nextPage } = usePagination(
+  foodItems,
+  itemsPerPage
+)
+
 const isEditModalOpen = ref(false)
 const isDeleteModalOpen = ref(false)
 const editingItem = ref(null)
 const deletingItem = ref(null)
-
-const totalPages = computed(() => Math.max(1, Math.ceil(foodItems.value.length / itemsPerPage)))
-
-const paginatedFoodItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return foodItems.value.slice(start, end)
-})
-
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
-
-const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
 
 const openEditModal = (item) => {
   editingItem.value = { ...item }
