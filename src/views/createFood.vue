@@ -2,7 +2,7 @@
   <div class="p-4 overflow-auto">
     <div class="">
       <div
-        class="glassmorphic-card bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4"
+        class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4"
       >
         <h2 class="text-3xl sm:text-4xl font-bold sm:mb-4 text-center">Create Food</h2>
         <form @submit.prevent="handleCreateFood" class="flex flex-col sm:flex-row gap-6 sm:gap-10">
@@ -28,10 +28,6 @@
                 class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg"
               >
                 <option value="" disabled selected>Select category</option>
-                <!-- <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Snacks">Snacks</option> -->
                 <option v-for="category in categories" :key="category" :value="category">
                   {{ category }}
                 </option>
@@ -157,10 +153,6 @@ const categories = [
 </script>
 
 <style scoped>
-.glassmorphic-card {
-  backdrop-filter: blur(10px);
-}
-
 .glassmorphic-input {
   @apply bg-white bg-opacity-20 border border-white border-opacity-50 placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent;
 }
