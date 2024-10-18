@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen p-8 flex flex-col overflow-scroll">
+  <div class="min-h-screen p-8 flex flex-col overflow-scroll cursor-pointer">
     <div class="max-w-3xl mx-auto w-full flex-grow flex flex-col">
       <h1 class="text-4xl font-bold text-white mb-4 text-center">Food List</h1>
       <div class="flex-grow overflow-auto mb-4">
@@ -21,7 +21,10 @@
                 <p class="text-sm text-gray-500">Created: {{ item.createdDate }}</p>
               </div>
               <div class="flex space-x-2">
-                <button @click="openEditModal(item)" class="p-2 text-gray-600 hover:text-blue-800">
+                <button
+                  @click="openEditModal(item)"
+                  class="p-2 text-gray-600 hover:text-blue-800 transform transition-transform duration-300 hover:scale-125"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -37,7 +40,10 @@
                     />
                   </svg>
                 </button>
-                <button @click="openDeleteModal(item)" class="p-2 text-red-600 hover:text-red-800">
+                <button
+                  @click="openDeleteModal(item)"
+                  class="p-2 text-red-600 hover:text-red-800 transform transition-transform duration-300 hover:scale-125"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

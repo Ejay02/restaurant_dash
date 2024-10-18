@@ -1,8 +1,83 @@
 <template>
-  <div>Hello from dashboard</div>
+  <div
+    class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 p-4 sm:p-6 m-4 cursor-pointer overflow-auto"
+  >
+    <div class="mb-4 text-right">
+      <h1 class="text-2xl font-bold">Hello JD,</h1>
+      <h6>Welcome to your dashboard</h6>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 ">
+      <!-- Orders Summary -->
+      <div
+        class="bg-blue-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
+      >
+        <h2 class="text-lg font-semibold mb-2">Orders</h2>
+        <p class="text-3xl font-bold">25</p>
+        <p class="text-sm text-gray-600">Today's Orders</p>
+      </div>
+
+      <!-- Revenue -->
+      <div
+        class="bg-green-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
+      >
+        <h2 class="text-lg font-semibold mb-2">Revenue</h2>
+        <p class="text-3xl font-bold">$1,250</p>
+        <p class="text-sm text-gray-600">Today's Revenue</p>
+      </div>
+
+      <!-- Popular Dish -->
+      <div
+        class="bg-yellow-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
+      >
+        <h2 class="text-lg font-semibold mb-2">Popular Dish</h2>
+        <p class="text-xl font-bold">Margherita Pizza</p>
+        <p class="text-sm text-gray-600">15 orders today</p>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="mt-6 text-center">
+      <h2 class="text-xl font-semibold mb-3">Quick Actions</h2>
+      <div class="flex flex-wrap gap-2 text-center items-center justify-center">
+        <RouterLink
+          to="/home/orders"
+          class="bg-blue-500 text-white px-4 py-2 rounded-lg transform transition-transform duration-300 hover:scale-95"
+        >
+          View Orders
+        </RouterLink>
+        <RouterLink
+          to="/home/food"
+          class="bg-green-500 text-white px-4 py-2 rounded-lg transform transition-transform duration-300 hover:scale-95"
+        >
+          Manage Menu
+        </RouterLink>
+        <RouterLink
+          to="/home/analytics"
+          class="bg-yellow-500 text-white px-4 py-2 rounded-lg transform transition-transform duration-300 hover:scale-95"
+        >
+          View Analytics
+        </RouterLink>
+        <RouterLink
+          to="/home/create-food"
+          class="bg-purple-500 text-white px-4 py-2 rounded-lg transform transition-transform duration-300 hover:scale-95"
+        >
+          Add New Dish
+        </RouterLink>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <!-- <h2 class="text-xl font-semibold mb-3">Recent Orders</h2>
+      <Orders /> -->
+      <Orders title="Recent Orders" :limit="3" :showPagination="false" />
+    </div>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Orders from '@/views/orders.vue'
+</script>
 
 <style scoped>
 .bg-animate-gradient {
