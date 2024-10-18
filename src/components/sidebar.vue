@@ -6,7 +6,7 @@
       'glassmorphic-sidebar'
     ]"
   >
-    <div class="p-4">
+    <div class="p-4 flex">
       <button @click="toggleSidebar" class="hover:text-gray-300 transition-colors">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,34 +23,39 @@
           />
         </svg>
       </button>
+      <h2 class="ml-4 text-amber-300 font-bold cursor-pointer">
+        {{ isOpen ? 'Quick Dash' : '' }}
+      </h2>
     </div>
-    <nav class="mt-8 space-y-2 px-3 text-black font-extrabold text-xl">
-      <router-link
-        v-for="item in menuItems"
-        :key="item.name"
-        :to="`/home${item.route}`"
-        class="flex py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
-        :class="[
-          {
-            'flex-col items-center': !isOpen,
-            'items-center': isOpen
-          }
-        ]"
-      >
-        <i :class="[item.icon, 'w-4 h-4']"></i>
-        <span
-          :class="{
-            'opacity-0': !isOpen,
-            'opacity-100': isOpen,
-            'transition-opacity duration-300': true,
-            'ml-2': isOpen,
-            'text-center': !isOpen
-          }"
+    <div class="text-center">
+      <nav class="mt-8 space-y-2 px-3 text-black font-extrabold text-xl">
+        <router-link
+          v-for="item in menuItems"
+          :key="item.name"
+          :to="`/home${item.route}`"
+          class="flex py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
+          :class="[
+            {
+              'items-center': !isOpen,
+              'items-center': isOpen
+            }
+          ]"
         >
-          {{ item.name }}
-        </span>
-      </router-link>
-    </nav>
+          <i :class="[item.icon, 'w-4 h-4']"></i>
+          <span
+            :class="{
+              'opacity-0': !isOpen,
+              'opacity-100': isOpen,
+              'transition-opacity duration-300': true,
+              'ml-2': isOpen,
+              'text-center': !isOpen
+            }"
+          >
+            {{ item.name }}
+          </span>
+        </router-link>
+      </nav>
+    </div>
   </aside>
 </template>
 

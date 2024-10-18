@@ -3,7 +3,7 @@
     class="h-screen w-full flex justify-center bg-gradient-to-br from-purple-400 via-slate-500 to-purple-500 bg-animate-gradient"
   >
     <!-- Sidebar -->
-    <Sidebar />
+    <Sidebar v-if="currentRouteName !== 'settings'" />
 
     <!-- Main content -->
     <div class="flex-1 flex flex-col overflow-hidden">
@@ -12,15 +12,18 @@
 
       <!-- Page content -->
       <router-view />
-  
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import Nav from '@/components/nav.vue'
 import Sidebar from '@/components/sidebar.vue'
 
+const route = useRoute()
+const currentRouteName = computed(() => route.name)
 </script>
 
 <style scoped>
