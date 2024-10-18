@@ -84,9 +84,6 @@
               />
             </div>
 
-            <div v-if="isDisabled && currentPassword !== newPassword" class="text-xs text-red-800">
-              Passwords do not match.**
-            </div>
           </div>
           <!-- Update Password Button -->
 
