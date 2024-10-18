@@ -2,18 +2,17 @@
   <header class="glassmorphic-header">
     <div class="flex justify-between items-center px-6 py-4">
       <!-- logo -->
-      <div class="flex items-center space-x-2 cursor-pointer">
-        <img
-          src="../assets/quick_dash.png"
-          alt="quick dash logo"
-          class="rounded-full w-10 h-10"
-        />
-      </div>
+      <router-link to="/home/dashboard" class="flex items-center space-x-2 cursor-pointer">
+        <img src="../assets/quick_dash.png" alt="quick dash logo" class="rounded-full w-10 h-10" />
+      </router-link>
 
       <div class="flex items-center space-x-4">
         <!-- Notification bell -->
         <div class="relative">
-          <button @click="toggleNotifications" class="glassmorphic-button hover:text-purple-500">
+          <button
+            @click="toggleNotifications"
+            class="glassmorphic-button hover:text-purple-500 text-center text-amber-400"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4 shake-animation"
