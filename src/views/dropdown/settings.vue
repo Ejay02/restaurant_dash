@@ -83,7 +83,6 @@
                 class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               />
             </div>
-
           </div>
           <!-- Update Password Button -->
 
@@ -91,10 +90,8 @@
             <button
               :disabled="isDisabled"
               type="submit"
-              class="rounded bg-blue-200 text-black px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-blue-300 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+              class="rounded bg-blue-200 text-black px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-50 transform transition-transform duration-300 hover:scale-105"
             >
-              <!-- class="w-full py-3 px-6 border border-transparent rounded-lg text-lg font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out glassmorphic-button disabled:opacity-50 disabled:cursor-not-allowed" -->
-
               Update Password
             </button>
           </div>
