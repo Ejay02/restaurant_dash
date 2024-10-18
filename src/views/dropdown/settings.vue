@@ -83,13 +83,18 @@
                 class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               />
             </div>
+
           </div>
           <!-- Update Password Button -->
+
           <div class="flex justify-end">
             <button
+              :disabled="isDisabled"
               type="submit"
-              class="rounded bg-blue-200 text-black px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-blue-300 transition-colors"
+              class="rounded bg-blue-200 text-black px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-blue-300 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
             >
+              <!-- class="w-full py-3 px-6 border border-transparent rounded-lg text-lg font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out glassmorphic-button disabled:opacity-50 disabled:cursor-not-allowed" -->
+
               Update Password
             </button>
           </div>
@@ -100,13 +105,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const avatar = ref('')
 const notificationsEnabled = ref(true)
 const currentPassword = ref('')
+
 const newPassword = ref('')
-const confirmPassword = ref('')
+
 const initials = ref('JD')
 
 const handleAvatarChange = (event) => {
@@ -121,15 +127,18 @@ const handleAvatarChange = (event) => {
 }
 
 const handlePasswordChange = () => {
-  if (newPassword.value === confirmPassword.value) {
+  if (newPassword.value) {
     console.log('Password updated successfully')
     currentPassword.value = ''
     newPassword.value = ''
-    confirmPassword.value = ''
   } else {
     console.error('Passwords do not match')
   }
 }
+
+const isDisabled = computed(() => {
+  return !(currentPassword.value && newPassword.value)
+})
 </script>
 
 <style scoped>
