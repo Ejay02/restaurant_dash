@@ -2,19 +2,22 @@
   <div
     class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 p-4 sm:p-6 m-4 cursor-pointer overflow-auto"
   >
-    <div class="mb-4 text-right">
+    <div class="mb-4 text-right text-white">
       <h1 class="text-2xl font-bold">Hello JD,</h1>
       <h6>Welcome to your dashboard</h6>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6">
       <!-- Orders Summary -->
       <div
         class="bg-blue-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
       >
         <h2 class="text-lg font-semibold mb-2">Orders</h2>
-        <p class="text-3xl font-bold">25</p>
-        <p class="text-sm text-gray-600">Today's Orders</p>
+        <div class="flex justify-between items-center mt-2">
+          <i class="fa-solid fa-arrow-up-right-dots fa-2xl" style="color: blue"></i>
+          <p class="text-3xl font-bold">25</p>
+        </div>
+        <p class="text-xs text-gray-400 text-center mt-2">Today's Orders</p>
       </div>
 
       <!-- Revenue -->
@@ -22,8 +25,11 @@
         class="bg-green-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
       >
         <h2 class="text-lg font-semibold mb-2">Revenue</h2>
-        <p class="text-3xl font-bold">$1,250</p>
-        <p class="text-sm text-gray-600">Today's Revenue</p>
+        <div class="flex justify-between items-center mt-2">
+          <i class="fa-solid fa-money-bill-trend-up fa-2xl" style="color: green"></i>
+          <p class="text-3xl font-bold">${{ 1250 }}</p>
+        </div>
+        <p class="text-xs text-gray-400 text-center mt-2">Today's Revenue</p>
       </div>
 
       <!-- Popular Dish -->
@@ -31,14 +37,17 @@
         class="bg-yellow-100 p-4 rounded-lg transform transition-transform duration-300 hover:scale-105"
       >
         <h2 class="text-lg font-semibold mb-2">Popular Dish</h2>
-        <p class="text-xl font-bold">Margherita Pizza</p>
-        <p class="text-sm text-gray-600">15 orders today</p>
+        <div class="flex justify-between items-center mt-2">
+          <i class="fa-solid fa-fire fa-2xl" style="color: red"></i>
+          <p class="text-xl font-bold">Margherita Pizza</p>
+        </div>
+        <p class="text-xs text-gray-400 text-center mt-2">15 orders today</p>
       </div>
     </div>
 
     <!-- Quick Actions -->
     <div class="mt-6 text-center">
-      <h2 class="text-xl font-semibold mb-3">Quick Actions</h2>
+      <h2 class="text-xl font-semibold mb-3 text-white">Quick Actions</h2>
       <div class="flex flex-wrap gap-2 text-center items-center justify-center">
         <RouterLink
           to="/home/orders"
@@ -68,8 +77,6 @@
     </div>
 
     <div class="mt-6">
-      <!-- <h2 class="text-xl font-semibold mb-3">Recent Orders</h2>
-      <Orders /> -->
       <Orders title="Recent Orders" :limit="3" :showPagination="false" />
     </div>
   </div>

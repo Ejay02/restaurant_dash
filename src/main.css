@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply h-screen ;
+  @apply h-screen;
   font-family: 'Gowun Batang', serif;
   font-weight: 700;
   font-style: normal;
   color: black;
+  
 }

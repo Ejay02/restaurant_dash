@@ -1,9 +1,9 @@
 <template>
   <div
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-slate-500 to-purple-500 bg-animate-gradient p-4"
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient "
   >
     <div
-      class="glassmorphic-card w-full max-w-md p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30"
+      class="glassmorphic-card w-full max-w-md p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30 m-6 text-white"
     >
       <h2 class="text-3xl font-bold mb-4 text-center">Signup</h2>
       <form @submit.prevent="" class="space-y-6">
@@ -126,7 +126,7 @@
       </form>
 
       <div class="text-center mt-4 text-sm">
-        Have an account? <a href="/" class="text-indigo-700">Login</a>
+        Have an account? <a href="/" class="text-indigo-400">Login</a>
       </div>
     </div>
   </div>
