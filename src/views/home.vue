@@ -1,6 +1,9 @@
 <template>
-  <div
+  <!-- <div
     class="h-screen w-full flex justify-center bg-gradient-to-br from-purple-400 via-slate-500 to-purple-500 bg-animate-gradient"
+  > -->
+  <div
+    class="h-screen w-full flex justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
   >
     <!-- Sidebar -->
     <Sidebar v-if="currentRouteName !== 'settings'" />

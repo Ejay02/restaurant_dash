@@ -41,7 +41,7 @@
 import Profile from './profile.vue'
 
 const toggleNotifications = () => {
-  // Notification logic
+  // Notification logic in settings
 }
 </script>
 

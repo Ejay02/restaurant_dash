@@ -16,14 +16,14 @@
                 class="w-20 h-20 object-cover rounded-md mr-4"
               />
               <div class="flex-grow">
-                <h3 class="text-xl font-semibold text-gray-800">{{ item.name }}</h3>
-                <p class="text-gray-600">${{ item.price.toFixed(2) }}</p>
-                <p class="text-sm text-gray-500">Created: {{ item.createdDate }}</p>
+                <h3 class="text-xl font-semibold text-white">{{ item.name }}</h3>
+                <p class="text-gray-400">${{ item.price.toFixed(2) }}</p>
+                <p class="text-sm text-gray-400">Created: {{ item.createdDate }}</p>
               </div>
               <div class="flex space-x-2">
                 <button
                   @click="openEditModal(item)"
-                  class="p-2 text-gray-600 hover:text-blue-800 transform transition-transform duration-300 hover:scale-125"
+                  class="p-2 text-blue-400 hover:text-blue-800 transform transition-transform duration-300 hover:scale-125"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -6,8 +6,8 @@
       'glassmorphic-sidebar'
     ]"
   >
-    <div class="p-4 flex">
-      <button @click="toggleSidebar" class="hover:text-gray-300 transition-colors">
+    <div class="p-4 flex text-white">
+      <button @click="toggleSidebar" class="hover:text-amber-300 transition-colors">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -23,12 +23,12 @@
           />
         </svg>
       </button>
-      <h2 class="ml-4 text-amber-300 font-bold cursor-pointer">
+      <h2 class="ml-4 text-amber-300 font-bold cursor-pointer text-2xl">
         {{ isOpen ? 'Quick Dash' : '' }}
       </h2>
     </div>
     <div class="text-center">
-      <nav class="mt-8 space-y-2 px-3 text-black font-extrabold text-xl">
+      <nav class="mt-8 space-y-2 px-3 text-white font-extrabold text-xl">
         <router-link
           v-for="item in menuItems"
           :key="item.name"
@@ -36,7 +36,7 @@
           class="flex py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200"
           :class="[
             {
-              'items-center': !isOpen,
+              'items-center fa-3xl': !isOpen,
               'items-center': isOpen
             }
           ]"

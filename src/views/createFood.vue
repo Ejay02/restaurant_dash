@@ -1,8 +1,8 @@
 <template>
-  <div class="p-4 overflow-auto">
+  <div class="p-4 overflow-auto text-white ">
     <div class="">
       <div
-        class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4"
+        class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4 cursor-pointer"
       >
         <h2 class="text-3xl sm:text-4xl font-bold sm:mb-4 text-center">Create Food</h2>
         <form @submit.prevent="handleCreateFood" class="flex flex-col sm:flex-row gap-6 sm:gap-10">
@@ -43,7 +43,8 @@
                 required
                 placeholder="Set price"
                 min="0"
-                class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg"
+                class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg cursor-pointer"
+
               />
             </div>
             <div>
@@ -91,7 +92,7 @@
           <button
             :disabled="isButtonDisabled"
             type="submit"
-            class="rounded bg-blue-200 text-black px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-50 transform transition-transform duration-300 hover:scale-105"
+            class="rounded bg-indigo-600 text-white px-4 py-2 text-sm mt-4 w-full sm:w-40 hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50 transform transition-transform duration-300 hover:scale-105"
           >
             Create Food
           </button>

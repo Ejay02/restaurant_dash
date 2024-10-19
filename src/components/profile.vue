@@ -3,27 +3,26 @@
     <!-- Avatar and Username -->
     <div class="flex items-center space-x-2 cursor-pointer" @click="toggleUserMenu">
       <img src="https://via.placeholder.com/40" alt="User avatar" class="rounded-full w-10 h-10" />
-      <div class="">
+      <div class="text-white">
         <span class="font-medium">John Doe</span>
         <h6 class="text-xs">jodoe@test.com</h6>
       </div>
     </div>
 
-    <!-- User menu dropdown with glassmorphism effect -->
+    <!-- User menu dropdown  -->
     <Teleport to="body">
       <div
         v-if="showUserMenu"
         :style="dropdownStyle"
-        class="fixed w-48 rounded-md py-1 glassmorphism"
+        class="fixed w-48 rounded-md py-1 glassmorphism text-white"
       >
-        
-        <a href="/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
-          <i class="fa-solid fa-user-gear"></i>
-          <span class="ml-2">Settings</span>
+        <a href="/settings" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20 ">
+          <i class="fa-solid fa-user-gear text-white"></i>
+          <span class="ml-2 text-white">Settings</span>
         </a>
-        <a href="/" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20">
-          <i class="fa-solid fa-power-off"></i>
-          <span class="ml-2">Logout</span>
+        <a href="/" class="block px-4 py-2 text-sm hover:bg-white hover:bg-opacity-20 ">
+          <i class="fa-solid fa-power-off text-white"></i>
+          <span class="ml-2 text-white">Logout</span>
         </a>
       </div>
     </Teleport>
@@ -82,12 +81,10 @@ onBeforeUnmount(() => {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Adjust text color for better visibility */
 .glassmorphism a {
   color: rgba(0, 0, 0, 0.8);
 }
 
-/* Adjust hover effect */
 .glassmorphism a:hover {
   background: rgba(255, 255, 255, 0.3);
 }
