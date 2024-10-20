@@ -1,57 +1,73 @@
-# food-delivery-restaurant-dashboard
+# Quick Dash Restaurant Admin Dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+Quick Dash Restaurant Admin Dashboard is a powerful management tool for restaurant owners and staff to handle orders, manage menus, and oversee operations. This dashboard complements the Quick Dash customer-facing food ordering website.
 
-## Recommended IDE Setup
+View the live demo: [https://quick-dash-restaurant.netlify.app/](https://quick-dash-restaurant.netlify.app/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Customize configuration
+- Comprehensive order management system
+- Real-time order notifications and updates
+- Menu creation and editing tools
+- Inventory tracking and low stock alerts
+- Sales and revenue analytics
+- User-friendly interface built with Vue.js
+- Responsive design using Tailwind CSS for seamless use on various devices
+- Secure authentication for restaurant staff
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Prerequisites
 
-## Project Setup
+Before you begin, ensure you have met the following requirements:
 
-```sh
-npm install
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+## Installation
+
+To set up the Quick Dash Restaurant Admin Dashboard locally, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Ejay02/restaurant_dash.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd quick-dash-admin
+   ```
+3. Install the dependencies:
+   ```
+   npm install
+   ```
+
+## Usage
+
+To run the admin dashboard locally, use the following command:
+
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+This will start the development server. Open your browser and navigate to `http://localhost:5173` to view the application.
 
-```sh
+## Building for Production
+
+To build the application for production, run:
+
+```
 npm run build
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+This will generate a `dist` folder with the compiled assets ready for deployment.
 
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Contributing
 
-```sh
-npm run test:e2e:dev
-```
+Contributions to the Quick Dash Restaurant Admin Dashboard are welcome! Please feel free to create your branch, get creative, and submit a Pull Request! Don't forget to mention changes.
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Related Projects
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+- [Quick Dash Customer UI](https://quick-dash.netlify.app/).: The customer-facing food ordering website that this admin dashboard supports. 
 
-```sh
-npm run build
-npm run test:e2e
-```
+## License
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+This project is licensed under the [MIT License](LICENSE).
