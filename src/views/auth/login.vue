@@ -1,5 +1,5 @@
 <template>
-  <LoadingScreen v-if="loading" />
+  <LoadingScreen v-if="loading" :msg="'Brewing up something amazing'" />
   <div
     v-else
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
@@ -8,7 +8,7 @@
       class="text-white glassmorphic-card w-full max-w-md p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30"
     >
       <h2 class="text-3xl font-bold mb-6 text-center">Login to your Restaurant</h2>
-      <form @submit.prevent="handleLogin" class="space-y-6">
+      <form @submit.prevent="" class="space-y-6">
         <div>
           <label for="email" class="block text-sm font-medium">Email</label>
           <input
@@ -35,6 +35,7 @@
         </div>
         <div>
           <button
+            @click="handleLogin"
             :disabled="isButtonDisabled"
             type="submit"
             class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white"
@@ -54,24 +55,61 @@
 <script setup>
 import router from '@/router'
 import { ref, computed } from 'vue'
+import { setCookie } from '@/utils/cookie'
+import { useUserStore } from '@/stores/userStore'
+import { loginMutation } from '@/graphql/mutations'
+import { useMutation } from '@vue/apollo-composable'
 import LoadingScreen from '@/components/loadingScreen.vue'
+import { useNotifications } from '@/composables/globalAlert'
 
 const email = ref('')
 const password = ref('')
-const loading = ref(false)
 
 const isButtonDisabled = computed(() => {
   return email.value === '' || password.value === ''
 })
 
-const handleLogin = () => {
-  loading.value = true
+const resetForm = () => {
+  email.value = ''
+  password.value = ''
+}
+
+const userStore = useUserStore()
+const { notify } = useNotifications()
+
+const { mutate: login, loading } = useMutation(loginMutation)
+
+const handleLogin = async () => {
   try {
-    router.push('/home/dashboard')
+    const variables = {
+      email: email.value,
+      password: password.value
+    }
+
+    const res = await login(variables)
+
+    if (res.data && res.data.login) {
+      const { accessToken, refreshToken, user } = res.data.login
+
+      // Set user data in the store
+      userStore.setUser({
+        accessToken,
+        refreshToken,
+        user
+      })
+
+      userStore.persistData()
+
+      // Set cookies
+      setCookie('access_token', accessToken, 7)
+      setCookie('refresh_token', refreshToken, 7)
+
+      router.push('/home/dashboard')
+      notify('Login successful', 'success')
+      resetForm()
+    }
   } catch (error) {
-    console.log(error)
-  } finally {
-    loading.value = false
+    notify(error.message, 'error')
   }
 }
 </script>
