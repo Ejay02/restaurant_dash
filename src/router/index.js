@@ -9,6 +9,8 @@ import Food from '@/components/foodList.vue'
 import Settings from '@/views/dropdown/settings.vue'
 import NotFound from '@/components/error/notFound.vue'
 import Signup from '@/views/auth/signup.vue'
+import ForgotPassword from '@/views/auth/forgotPassword.vue'
+import ResetPassword from '@/views/auth/resetPassword.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +24,16 @@ const router = createRouter({
       path: '/signup',
       name: 'signup',
       component: Signup
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPassword
+    },
+    {
+      path: '/reset-password',
+      name: 'reset-password',
+      component: ResetPassword
     },
     {
       path: '/home',
@@ -53,7 +65,7 @@ const router = createRouter({
           name: 'create-food',
           component: CreateFood
         },
-      
+
         {
           path: '/settings',
           name: 'settings',
