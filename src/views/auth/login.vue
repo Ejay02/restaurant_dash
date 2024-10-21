@@ -1,5 +1,5 @@
 <template>
-  <LoadingScreen v-if="loading" :msg="'Brewing up something amazing'" />
+  <LoadingScreen v-if="loading || googleLoading" :msg="'Brewing up something amazing'" />
   <div
     v-else
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
@@ -23,30 +23,59 @@
         </div>
         <div>
           <label for="password" class="block text-sm font-medium">Password</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            minlength="8"
-            placeholder="Password*"
-            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-          />
+          <div class="relative">
+            <input
+              :type="showPassword ? 'text' : 'password'"
+              id="password"
+              v-model="password"
+              required
+              minlength="8"
+              placeholder="Password*"
+              class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            />
+            <button
+              type="button"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400"
+              @click="togglePasswordVisibility('password')"
+            >
+              <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- forgot -->
+        <div class="mt-6 text-sm text-end">
+          <a href="/forgot-password" @click="forgotPassword" class="hover:underline"
+            >Forgot password?
+          </a>
         </div>
         <div>
           <button
             @click="handleLogin"
             :disabled="isButtonDisabled"
             type="submit"
-            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-transform duration-300 hover:scale-105 glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white"
           >
-            Sign in
+            Sign In
           </button>
         </div>
       </form>
 
+      <!-- google -->
+      <div class="mt-4 text-center">
+        <p class="text-sm">Or Sign In with</p>
+        <div class="flex justify-center space-x-4 mt-2">
+          <!--  -->
+          <GoogleLogin :callback="callback" class="block w-full rounded-md shadow-sm">
+            <button class="text-white p-2 rounded-md hover:bg-slate-500">
+              <img src="/src/assets/google.jpg" class="w-4 h-4" />
+            </button>
+          </GoogleLogin>
+        </div>
+      </div>
+
       <div class="text-center mt-4 text-sm">
-        Don't have an account? <a href="/signup" class="text-indigo-400">Signup</a>
+        Need an account? <a href="/signup" class="text-indigo-400 hover:underline">Signup</a>
       </div>
     </div>
   </div>
@@ -57,17 +86,24 @@ import router from '@/router'
 import { ref, computed } from 'vue'
 import { setCookie } from '@/utils/cookie'
 import { useUserStore } from '@/stores/userStore'
-import { loginMutation } from '@/graphql/mutations'
 import { useMutation } from '@vue/apollo-composable'
 import LoadingScreen from '@/components/loadingScreen.vue'
 import { useNotifications } from '@/composables/globalAlert'
+import { googleLoginMutation, loginMutation } from '@/graphql/mutations'
 
 const email = ref('')
 const password = ref('')
+const showPassword = ref(false)
 
 const isButtonDisabled = computed(() => {
   return email.value === '' || password.value === ''
 })
+
+const togglePasswordVisibility = (field) => {
+  if (field === 'password') {
+    showPassword.value = !showPassword.value
+  }
+}
 
 const resetForm = () => {
   email.value = ''
@@ -107,6 +143,40 @@ const handleLogin = async () => {
       router.push('/home/dashboard')
       notify('Login successful', 'success')
       resetForm()
+    }
+  } catch (error) {
+    notify(error.message, 'error')
+  }
+}
+
+const { mutate: googleLogin, loading: googleLoading } = useMutation(googleLoginMutation)
+
+// googleLoginMutation
+const callback = async (response) => {
+  try {
+    const res = await googleLogin({
+      code: response.code
+    })
+
+    if (res.data) {
+      console.log('res:', res.data)
+      userStore.setUser({
+        accessToken: res.data.googleLogin.accessToken,
+        refreshToken: res.data.googleLogin.refreshToken,
+        user: res.data.googleLogin.user
+      })
+
+      userStore.persistData()
+
+      // Set cookies
+      setCookie('access_token', res.data.googleLogin.accessToken, 7)
+      setCookie('refresh_token', res.data.googleLogin.refreshToken, 7)
+      localStorage.setItem('avatar', res.data.googleLogin?.user?.avatar?.url)
+
+      router.push('/home/dashboard')
+      notify('Login successful', 'success')
+
+      // userStore.refreshUser();
     }
   } catch (error) {
     notify(error.message, 'error')

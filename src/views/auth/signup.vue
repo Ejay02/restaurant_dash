@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient "
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
   >
     <div
       class="glassmorphic-card w-full max-w-md p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30 m-6 text-white"
@@ -101,15 +101,24 @@
         <!-- PASSword -->
         <div>
           <label for="password" class="block text-sm font-medium">Password</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            minlength="8"
-            placeholder="Password*"
-            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-          />
+          <div class="relative">
+            <input
+              id="password"
+              v-model="password"
+              :type="showPassword ? 'text' : 'password'"
+              required
+              minlength="8"
+              placeholder="Password*"
+              class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            />
+            <button
+              type="button"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400"
+              @click="togglePasswordVisibility('password')"
+            >
+              <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
         </div>
 
         <!-- button -->
@@ -117,7 +126,7 @@
           <button
             :disabled="isButtonDisabled"
             type="submit"
-            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-transform duration-300 hover:scale-105 glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleSignup"
           >
             Sign in
@@ -138,6 +147,7 @@ import { ref, computed } from 'vue'
 
 const email = ref('')
 const password = ref('')
+const showPassword = ref(false)
 
 const logo = ref(null)
 
@@ -151,6 +161,12 @@ const handleFileChange = (event) => {
 const isButtonDisabled = computed(() => {
   return email.value === '' || password.value === ''
 })
+
+const togglePasswordVisibility = (field) => {
+  if (field === 'password') {
+    showPassword.value = !showPassword.value
+  }
+}
 
 const handleSignup = () => {
   router.push('/home/dashboard')
