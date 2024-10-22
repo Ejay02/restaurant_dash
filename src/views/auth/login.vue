@@ -7,7 +7,7 @@
     <div
       class="text-white glassmorphic-card w-full max-w-md p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30"
     >
-      <h2 class="text-3xl font-bold mb-6 text-center">Login to your Restaurant</h2>
+      <h2 class="text-3xl font-bold mb-6 text-center">Sign In to your Restaurant</h2>
       <form @submit.prevent="" class="space-y-6">
         <div>
           <label for="email" class="block text-sm font-medium">Email</label>
@@ -18,7 +18,7 @@
             required
             autofocus
             placeholder="Email*"
-            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer"
           />
         </div>
         <div>
@@ -31,7 +31,7 @@
               required
               minlength="8"
               placeholder="Password*"
-              class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer"
             />
             <button
               type="button"
@@ -159,7 +159,7 @@ const callback = async (response) => {
     })
 
     if (res.data) {
-      console.log('res:', res.data)
+    
       userStore.setUser({
         accessToken: res.data.googleLogin.accessToken,
         refreshToken: res.data.googleLogin.refreshToken,

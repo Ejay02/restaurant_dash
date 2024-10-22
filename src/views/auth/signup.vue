@@ -135,7 +135,7 @@
       </form>
 
       <div class="text-center mt-4 text-sm">
-        Have an account? <a href="/" class="text-indigo-400">Login</a>
+        Have an account? <a href="/" class="text-indigo-400 hover:underline">Login</a>
       </div>
     </div>
   </div>
@@ -200,6 +200,7 @@ const handleSignup = () => {
 .glassmorphic-input {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
 }
 
 .glassmorphic-button {

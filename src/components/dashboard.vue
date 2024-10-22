@@ -3,7 +3,7 @@
     class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 p-4 sm:p-6 m-4 cursor-pointer overflow-auto"
   >
     <div class="mb-4 text-right text-white">
-      <h1 class="text-2xl font-bold">Hello JD,</h1>
+      <h1 class="text-2xl font-bold">Hello {{ fullName }},</h1>
       <h6>Welcome to your dashboard</h6>
     </div>
 
@@ -83,7 +83,13 @@
 </template>
 
 <script setup>
+import { useUserStore } from '@/stores/userStore'
 import Orders from '@/views/orders.vue'
+import { computed } from 'vue'
+
+const userStore = useUserStore()
+
+const fullName = computed(() => userStore.name)
 </script>
 
 <style scoped>

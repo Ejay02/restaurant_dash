@@ -1,5 +1,5 @@
 <template>
-  <LoadingScreen v-if="loading" :msg="'Password Recovery in Progress'" />
+  <LoadingScreen v-if="loading" :msg="'Password Reset in Progress'" />
   <div
     v-else
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
@@ -76,9 +76,10 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { useMutation } from '@vue/apollo-composable'
 import router from '@/router'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { useMutation } from '@vue/apollo-composable'
 import LoadingScreen from '@/components/loadingScreen.vue'
 import { useNotifications } from '@/composables/globalAlert'
 import { resetPasswordMutation } from '@/graphql/mutations'
@@ -86,17 +87,14 @@ import { resetPasswordMutation } from '@/graphql/mutations'
 const { notify } = useNotifications()
 const password = ref('')
 const confirmPassword = ref('')
-const activationToken = ref('')
 const showPassword = ref(false)
 const showConfirmPassword = ref(false)
 const passwordsMatch = ref(true)
 
-onMounted(() => {
-  activationToken.value = localStorage.getItem('resetPasswordToken')
-  if (!activationToken.value) {
-    notify('Invalid or missing reset token', 'error')
-  }
-})
+const route = useRoute()
+
+const activationToken = route.query.verify
+
 
 const isButtonDisabled = computed(() => {
   return password.value === '' || confirmPassword.value === '' || !passwordsMatch.value
@@ -130,13 +128,12 @@ const handleResetPassword = async () => {
   try {
     const res = await resetPassword({
       password: password.value,
-      activationToken: activationToken.value
+      activationToken: activationToken
     })
     if (res.data) {
       notify('Password Reset Successful', 'success')
       router.push('/')
       resetForm()
-      localStorage.removeItem('resetPasswordToken')
     }
   } catch (error) {
     notify(error.message, 'error')

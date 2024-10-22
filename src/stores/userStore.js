@@ -77,6 +77,7 @@ export const useUserStore = defineStore("user", {
       eraseCookie("access_token");
       eraseCookie("refresh_token");
       localStorage.removeItem("activation_token");
+      localStorage.removeItem("resetPasswordToken");
       localStorage.removeItem("avatar")
     },
 
