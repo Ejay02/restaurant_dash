@@ -23,7 +23,7 @@
               <div class="flex space-x-2">
                 <button
                   @click="openEditModal(item)"
-                  class="p-2 text-blue-400 hover:text-blue-800 transform transition-transform duration-300 hover:scale-125"
+                  class="p-2 text-blue-500 hover:text-amber-400 transform transition-transform duration-300 hover:scale-125"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -13,7 +13,7 @@
         v-else
         class="me-4 w-24 h-24 sm:w-28 sm:h-28 rounded bg-orange-300 flex items-center justify-center"
       >
-        <span>{{ initials || 'N/A' }}</span>
+        <span class="text-6xl">{{ fullName?.[0] }}</span>
       </div>
       <div class="flex-wrap mt-6">
         <input
@@ -31,10 +31,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
+import { computed } from 'vue'
 
-const avatar = ref('')
-const initials = ref('JD')
+const userStore = useUserStore()
+
+const avatar = computed(() => userStore.avatar)
+const fullName = computed(() => userStore.name)
 
 const handleAvatarChange = (event) => {
   const file = event.target.files[0]

@@ -1,5 +1,5 @@
 <template>
-  <LoadingScreen v-if="loading " :msg="'Password Recovery in Progress'" />
+  <LoadingScreen v-if="loading" :msg="'Password Recovery in Progress'" />
   <div
     v-else
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-gray-900 to-black bg-animate-gradient"
@@ -22,11 +22,11 @@
             required
             autofocus
             placeholder="Email*"
-            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+            class="glassmorphic-input mt-1 block w-full px-3 py-2 bg-white bg-opacity-20 border border-white border-opacity-50 rounded-md placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer"
           />
         </div>
 
-        <div>
+        <div class="">
           <button
             @click="handleForgotPassword"
             :disabled="isButtonDisabled"
@@ -48,7 +48,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useMutation } from '@vue/apollo-composable'
-import LoadingScreen from '@/components/loadingScreen.vue';
+import LoadingScreen from '@/components/loadingScreen.vue'
 import { useNotifications } from '@/composables/globalAlert'
 import { forgotPasswordMutation } from '@/graphql/mutations'
 

@@ -4,7 +4,7 @@
       <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center z-50">
         <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm" @click="closeModal"></div>
         <div class="relative bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-8 shadow-xl max-w-md w-full m-4">
-          <h2 class="text-2xl font-bold mb-4 text-white">Edit Food Item</h2>
+          <h2 class="text-2xl font-bold mb-4 text-white text-center">Edit Food Item</h2>
           <form @submit.prevent="saveChanges">
             <div class="mb-4">
               <label for="name" class="block text-sm font-medium text-white mb-1">Name</label>
