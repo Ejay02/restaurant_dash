@@ -12,6 +12,8 @@
         <h6>No worries, we'll send reset instructions to your email.</h6>
       </div>
 
+      
+
       <form class="space-y-6">
         <div>
           <label for="email" class="block text-sm font-medium">Email</label>
@@ -37,6 +39,8 @@
           </button>
         </div>
       </form>
+
+      <div class="border-b border-gray-500 border-opacity-50 mt-5"></div>
 
       <div class="text-center mt-4 text-sm">
         Go back to <a href="/" class="text-indigo-400 hover:underline">Sign In</a>

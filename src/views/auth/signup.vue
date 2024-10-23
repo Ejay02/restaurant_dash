@@ -129,27 +129,30 @@
             class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-transform duration-300 hover:scale-105 glassmorphic-button cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleSignup"
           >
-            Sign in
+            Sign Up
           </button>
         </div>
       </form>
 
+      <div class="border-b border-gray-500 border-opacity-50 mt-6"></div>
+
       <div class="text-center mt-4 text-sm">
-        Have an account? <a href="/" class="text-indigo-400 hover:underline">Login</a>
+        Have an account? <a href="/" class="text-indigo-400 hover:underline">Sign In</a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import router from '@/router'
 import { ref, computed } from 'vue'
+import { useNotifications } from '@/composables/globalAlert'
 
 const email = ref('')
 const password = ref('')
 const showPassword = ref(false)
 
 const logo = ref(null)
+const { notify } = useNotifications()
 
 const handleFileChange = (event) => {
   const file = event.target.files[0]
@@ -168,8 +171,13 @@ const togglePasswordVisibility = (field) => {
   }
 }
 
-const handleSignup = () => {
-  router.push('/home/dashboard')
+// TODO create restaurant sign up endpoint
+const handleSignup = async () => {
+  try {
+    notify('Apologies, this endpoint is not setup yet.', 'info')
+  } catch (error) {
+    notify(error.message, 'error')
+  }
 }
 </script>
 

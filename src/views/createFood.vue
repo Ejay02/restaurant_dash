@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 overflow-auto text-white ">
+  <div class="p-4 overflow-auto text-white">
     <div class="">
       <div
         class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl border border-white border-opacity-30 sm:p-4 p-4 cursor-pointer"
@@ -19,16 +19,24 @@
                 class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg"
               />
             </div>
-            <div>
+            <!-- Cat -->
+            <div class="cursor-pointer">
               <label for="foodCategory" class="block text-sm font-medium mb-2">Category</label>
               <select
                 id="foodCategory"
                 v-model="food.category"
                 required
-                class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg"
+                class="glassmorphic-select w-full px-4 py-2 rounded-lg text-lg"
               >
-                <option value="" disabled selected>Select category</option>
-                <option v-for="category in categories" :key="category" :value="category">
+                <option value="" disabled selected class="text-black font-bold">
+                  Select Category
+                </option>
+                <option
+                  v-for="category in categories"
+                  :key="category"
+                  :value="category"
+                  class="font-bold"
+                >
                   {{ category }}
                 </option>
               </select>
@@ -44,7 +52,6 @@
                 placeholder="Set price"
                 min="0"
                 class="glassmorphic-input w-full px-4 py-2 rounded-lg text-lg cursor-pointer"
-
               />
             </div>
             <div>
@@ -157,10 +164,20 @@ const categories = [
 
 <style scoped>
 .glassmorphic-input {
-  @apply bg-white bg-opacity-20 border border-white border-opacity-50 placeholder-black placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent;
+  @apply bg-white bg-opacity-20 border border-white border-opacity-50 placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent;
 }
 
 .glassmorphic-button {
   @apply bg-opacity-80 backdrop-filter backdrop-blur-sm;
+}
+
+.glassmorphic-select {
+  @apply bg-gray-500 bg-opacity-70 border border-white border-opacity-50 backdrop-filter backdrop-blur-3xl;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.glassmorphic-select:hover {
+  background-color: rgba(128, 128, 128, 0.7); /* grey color with 70% opacity */
 }
 </style>

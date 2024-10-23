@@ -44,9 +44,9 @@
         </div>
 
         <!-- forgot -->
-        <div class="mt-6 text-sm text-end">
+        <div class="mt-6 text-xs text-end">
           <a href="/forgot-password" @click="forgotPassword" class="hover:underline"
-            >Forgot password?
+            >Forgot Password?
           </a>
         </div>
         <div>
@@ -66,7 +66,7 @@
         <p class="text-sm">Or Sign In with</p>
         <div class="flex justify-center space-x-4 mt-2">
           <!--  -->
-          <GoogleLogin :callback="callback" class="block w-full rounded-md shadow-sm">
+          <GoogleLogin :callback="callback" class="block w-full">
             <button class="text-white p-2 rounded-md hover:bg-slate-500">
               <img src="/src/assets/google.jpg" class="w-4 h-4" />
             </button>
@@ -74,8 +74,10 @@
         </div>
       </div>
 
+      <div class="border-b border-gray-500 border-opacity-50 m-4"></div>
+
       <div class="text-center mt-4 text-sm">
-        Need an account? <a href="/signup" class="text-indigo-400 hover:underline">Signup</a>
+        Need an account? <a href="/signup" class="text-indigo-400 hover:underline">Sign Up</a>
       </div>
     </div>
   </div>
@@ -159,7 +161,6 @@ const callback = async (response) => {
     })
 
     if (res.data) {
-    
       userStore.setUser({
         accessToken: res.data.googleLogin.accessToken,
         refreshToken: res.data.googleLogin.refreshToken,

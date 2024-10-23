@@ -11,7 +11,7 @@
       </div>
       <div
         v-else
-        class="me-4 w-24 h-24 sm:w-28 sm:h-28 rounded bg-orange-300 flex items-center justify-center"
+        class="me-4 w-24 h-24 sm:w-28 sm:h-28 rounded bg-amber-400 flex items-center justify-center"
       >
         <span class="text-6xl">{{ fullName?.[0] }}</span>
       </div>
