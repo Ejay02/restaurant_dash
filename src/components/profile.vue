@@ -7,7 +7,7 @@
       </div>
       <div
         v-else
-        class="w-8 h-8 text-center text-xl rounded-md bg-gray-300 flex items-center justify-center font-bold text-gray-900"
+        class="w-8 h-8 text-center text-xl rounded-md bg-amber-400 flex items-center justify-center font-bold text-gray-900"
       >
         {{ fullName?.[0] }}
       </div>
